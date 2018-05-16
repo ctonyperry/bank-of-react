@@ -1,34 +1,33 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+
 import Debit from './Debit'
 
-class DebitsList extends Component {
+const DebitsList = (props)=>{
 
-    state = {
-        debits: []
-    }
+ 
 
-    componentDidMount() {
-        axios.get('/debits')
-            .then((response) => {
-                this.setState({debits: response.data})
-            })
-    }
+    const debitComponents = props.debits.map((debit, index) => {
+        return <Debit
+            description={debit.description}
+            amount={debit.amount}
+            date={debit.date}
+            key={index}/>;
+      });
+
+   
+    //   const debitComponents = props.debits.map((debit)=>{
+    //       return <Debit amount={debit.amount} />
+    //   }
+    // )
 
 
-    render() {
 
+    
         return (
-            <div>
-                this.state.debits.map((debit)=>
-                 <Debit amount={debit.amount}
-                        description={debit.description}
-                        date={debit.date}
-                        id={debit.id} />
+            <div>{debitComponents}</div>
         )
-            </div>
-        )
+    
+            
     }
-}
 
 export default DebitsList

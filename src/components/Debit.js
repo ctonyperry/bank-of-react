@@ -5,6 +5,8 @@ const Debit = (props)=>{
 
     
     return (
-        <div>{JSON.stringify(props.debits)}</div>)
+
+        
+        <div>debit</div>)
 }
 export default Debit
